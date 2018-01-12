@@ -5,7 +5,7 @@ import java.io.IOException;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import com.sauzny.jackson.ApmOne;
+import com.sauzny.jackson.entity.ApmOne;
 
 public class CustomSerializer extends StdSerializer<ApmOne> {
 

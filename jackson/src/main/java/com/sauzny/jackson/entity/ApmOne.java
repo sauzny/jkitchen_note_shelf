@@ -1,4 +1,4 @@
-package com.sauzny.jackson;
+package com.sauzny.jackson.entity;
 
 import java.time.LocalDateTime;
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.sauzny.jackson.custom;
 
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.sauzny.jackson.ApmOne;
+import com.sauzny.jackson.entity.ApmOne;
 
 public class Main {
 
