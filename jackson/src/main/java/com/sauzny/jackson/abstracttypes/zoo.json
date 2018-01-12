@@ -1,0 +1,13 @@
+{
+  "name" : "SH Wild Park",
+  "city" : "ShangHai",
+  "animals" : [ {
+    "@class" : "com.sauzny.jkitchen_note.json.abstracttypes.Lion",
+    "name" : "Samba",
+    "type" : "carnivorous"
+  }, {
+    "@class" : "com.sauzny.jkitchen_note.json.abstracttypes.Elephant",
+    "name" : "Manny",
+    "type" : "herbivorous"
+  } ]
+}
