@@ -45,6 +45,7 @@
 		    <artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
 
+		<!-- AOP 开始 -->
 		<dependency>  
 		    <groupId>org.springframework.boot</groupId>  
 		    <artifactId>spring-boot-starter-aop</artifactId>  
@@ -57,17 +58,56 @@
 			<version>3.2.5</version>
 		</dependency>
 		
-		<!-- Logging 开始 -->
+		<!-- AOP 结束 -->
+		
+		<!-- JDBC connection pool HikariCP -->
 		<dependency>
-		    <groupId>org.slf4j</groupId>
-		    <artifactId>slf4j-api</artifactId>
-		</dependency>
-
+	        <groupId>com.zaxxer</groupId>
+	        <artifactId>HikariCP</artifactId>
+	        <version>2.7.6</version>
+    	</dependency>
+    	
+    	<!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
 		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>druid</artifactId>
+		    <version>1.1.6</version>
 		</dependency>
-		<!-- Logging 结束 -->
+    	
+		<!-- MYSQL -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+         </dependency>
+         
+         <!-- Spring Boot JDBC -->
+         <!-- 
+         Spring Boot uses Tomcat pooling tomcat-jdbc by default, and follow this sequence to find the connection pool :
+         Tomcat pool -> - HikariCP ->  Commons DBCP ->  Commons DBCP2 
+         -->
+         <!-- JDBC模块实现了下面的功能
+             tomcat-jdbc－{version}.jar为我们自动配置DataSource.tomcat默认是DBCP的？？？
+			    如果你没有定义任何DataSource，SpringBoot将会自动配置一个内存的数据库资源设置
+			    如果没有设置任一个beans，SpringBoot会自动注册它
+			    初始化数据库
+			    如果我们在classpath里定义了schema.sql和data.sql文件，springBoot将会使用这些文件自动初始化数据库(但你必须选建库)
+			    除了载入schema.sql和data.sql外，SpringBoot也会载入schema-${platform}.sql和data-${platform}.sql，如果在你的classpath下存在的话。
+			    spring.datasource.schema=xxxx-db.sql 可以定义你的建库文件
+			    spring.datasource.data=xxxx-data.sql  可以定义你的数据文件
+			    spring.datasource.initialize＝true|false 可以决定是不是要初始化这些数据库文件
+			    spring.datasource.continueOnError＝true|false 有了错误是否继续运行
+          -->
+         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+		    <exclusions>
+		        <exclusion>
+		            <groupId>org.apache.tomcat</groupId>
+		            <artifactId>tomcat-jdbc</artifactId>
+		        </exclusion>
+		    </exclusions>
+          </dependency>
+		
 		
 		<!-- lombok -->
 		<dependency>
