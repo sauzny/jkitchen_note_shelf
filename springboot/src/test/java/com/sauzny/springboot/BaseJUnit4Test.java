@@ -13,8 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class BaseJUnit4Test{
     
-    
-    
     // @BeforeClass ==> @Before ==> @Test ==> @After ==> @AfterClass 
     
     /*
@@ -29,10 +27,5 @@ public class BaseJUnit4Test{
     @BeforeClass
     public static void beforeClass(){
         log.info("这是测试基础类BaseJUnit4Test中的{}", "beforeClass");
-    }
-    
-    @Test
-    public void test(){
-        log.info("test");
     }
 }

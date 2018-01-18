@@ -1,16 +1,12 @@
 package com.sauzny.springboot.scheduling;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.sauzny.springboot.BaseJUnit4Test;
 import com.sauzny.springboot.tools.MyTools;
 
-@RunWith(SpringJUnit4ClassRunner.class)//表示整合JUnit4进行测试
-@SpringBootApplication
-public class JunitSchedule{
+public class JunitSchedule extends BaseJUnit4Test{
     
     @Autowired
     private DynamicScheduling dynamicScheduling;

@@ -1,8 +1,6 @@
 package com.sauzny.springboot.aop;
 
 
-import javax.annotation.PostConstruct;
-
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -19,11 +17,6 @@ import lombok.extern.slf4j.Slf4j;
 @Component 
 @Slf4j
 public class AopAspect {
-    
-    @PostConstruct
-    public void init(){
-        log.info("AopTest init...");
-    }
     
 	/*
 
