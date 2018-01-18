@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.google.common.collect.Lists;
 
 @Service
 public class StudentService {
@@ -26,5 +29,19 @@ public class StudentService {
             return stu;
         });
         
+    }
+    
+    // com.sauzny.springboot.EnableTransaction 中开启了事务的注解
+    @Transactional
+    public void testTransactional(){
+
+        jdbcTemplate.update("INSERT INTO student (`name`) VALUES (?)", "bbb");
+        jdbcTemplate.update("INSERT INTO student (`name`) VALUES (?)", "ccc");
+        jdbcTemplate.update("INSERT INTO student (`name`) VALUES (?)", "ddd");
+        jdbcTemplate.update("INSERT INTO student (`name`) VALUES (?)", "eee");
+        jdbcTemplate.update("INSERT INTO student (`name`) VALUES (?)", "fff");
+        jdbcTemplate.update("INSERT INTO student (`name`) VALUES (?)", "aaa");
+        jdbcTemplate.update("INSERT INTO student (`name`) VALUES (?)", "ggg");
+        jdbcTemplate.update("INSERT INTO student (`name`) VALUES (?)", "hhh");
     }
 }
