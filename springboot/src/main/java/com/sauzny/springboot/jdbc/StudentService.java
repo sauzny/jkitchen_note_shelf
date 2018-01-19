@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -35,6 +37,8 @@ public class StudentService {
     // 增加事务注解即可
     
     @Transactional
+    // 设置 隔离级别 传播行为
+    // @Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
     public void testTransactional(){
 
         jdbcTemplate.update("INSERT INTO student (`name`) VALUES (?)", "bbb");

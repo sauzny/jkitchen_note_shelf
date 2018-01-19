@@ -9,6 +9,7 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.google.common.collect.Lists;
 
@@ -17,6 +18,27 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    // 增加此注解，即可
+    @Transactional
+    // 设置 隔离级别 传播行为
+    // @Transactional(isolation=Isolation.DEFAULT, propagation=Propagation.REQUIRED)
+    public void testTransactional(){
+        
+        // 创建10条记录
+        userRepository.save(new User("AAA", "testAAAmail@gmail.com"));
+        userRepository.save(new User("BBB", "testBBBmail@gmail.com"));
+        userRepository.save(new User("CCC", "testCCCmail@gmail.com"));
+        userRepository.save(new User("DDD", "testDDDmail@gmail.com"));
+        userRepository.save(new User("EEE", "testEEEmail@gmail.com"));
+        userRepository.save(new User("FFF", "testFFFmail@gmail.com"));
+        userRepository.save(new User("GGG", "testGGGmail@gmail.com"));
+        userRepository.save(new User("HHH", "testHHHmail@gmail.com"));
+        userRepository.save(new User("III", "testIIImail@gmail.com"));
+        userRepository.save(new User("JJJ", "testJJJmail@gmail.com"));
+        
+        userRepository.save(new User("JJJJJJJJJJJJJJJ", "testJJJmail@gmail.com"));
+    }
+    
     @Test
     public void save() {
 
@@ -33,17 +55,6 @@ public class UserService {
         }
         List<User> savedUserList = userRepository.save(userList);
         
-        // 创建10条记录
-        userRepository.save(new User("AAA", "testAAAmail@gmail.com"));
-        userRepository.save(new User("BBB", "testBBBmail@gmail.com"));
-        userRepository.save(new User("CCC", "testCCCmail@gmail.com"));
-        userRepository.save(new User("DDD", "testDDDmail@gmail.com"));
-        userRepository.save(new User("EEE", "testEEEmail@gmail.com"));
-        userRepository.save(new User("FFF", "testFFFmail@gmail.com"));
-        userRepository.save(new User("GGG", "testGGGmail@gmail.com"));
-        userRepository.save(new User("HHH", "testHHHmail@gmail.com"));
-        userRepository.save(new User("III", "testIIImail@gmail.com"));
-        userRepository.save(new User("JJJ", "testJJJmail@gmail.com"));
     }
     
     @Test
