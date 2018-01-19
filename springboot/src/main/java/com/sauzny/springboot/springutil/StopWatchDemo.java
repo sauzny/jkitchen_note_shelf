@@ -1,4 +1,4 @@
-package com.sauzny.springboot.stopwatch;
+package com.sauzny.springboot.springutil;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,35 +7,40 @@ import org.junit.Test;
 import org.springframework.util.StopWatch;
 import org.springframework.util.StopWatch.TaskInfo;
 
-public class Main {
+import com.sauzny.springboot.tools.MyTools;
 
-    public static void sleep(){
-        sleep(100L);
-    }
-    
-    public static void sleep(long sleep){
-        try {
-            Thread.sleep(sleep);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
+/**
+ * *************************************************************************
+ * @文件名称: StopWatchDemo.java
+ *
+ * @包路径  : com.sauzny.springboot.springutil 
+ *				 
+ * @版权所有: Personal xinxin (C) 2017
+ *
+ * @类描述:   耗时统计
+ * 
+ * @创建人:   ljx 
+ *
+ * @创建时间: 2018年1月19日 - 下午1:01:17 
+ *	
+ **************************************************************************
+ */
+public class StopWatchDemo {
     
     public static void work() {
         System.out.println("数据抓取任务");
         StopWatch clock = new StopWatch("业务1");
         clock.start("任务1");
-        sleep(100L);
+        MyTools.sleep(100L);
         clock.stop();
         clock.start("任务2");
-        sleep(200L);
+        MyTools.sleep(200L);
         clock.stop();
         clock.start("任务3");
-        sleep(300L);
+        MyTools.sleep(300L);
         clock.stop();
         clock.start("任务4");
-        sleep(400L);
+        MyTools.sleep(400L);
         clock.stop();
         System.out.println("数据抓取任务全部执行结束");
         System.out.println(clock.prettyPrint());
@@ -49,6 +54,6 @@ public class Main {
     
     @Test
     public void foo01(){
-        Main.work();
+        StopWatchDemo.work();
     }
 }
