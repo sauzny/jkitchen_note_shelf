@@ -7,8 +7,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.google.common.collect.Lists;
-
 @Service
 public class StudentService {
     
@@ -31,7 +29,11 @@ public class StudentService {
         
     }
     
-    // com.sauzny.springboot.EnableTransaction 中开启了事务的注解
+    
+    // 有的blog说需要在启动spring容器时候需要手动增加@EnableTransactionManagement
+    // 测试发现，不需要手动增加@EnableTransactionManagement
+    // 增加事务注解即可
+    
     @Transactional
     public void testTransactional(){
 
