@@ -220,6 +220,7 @@ public class NewCollections {
 			cell.getColumnKey();
 			cell.getValue();
 		}	
+        System.out.println("table :" + table);
 		
 	}
 	
