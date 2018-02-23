@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration debug="false">
+
+	<!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径 -->
+	<property name="LOG_HOME" value="/data/log/sparkbaby" />
+
+	<!-- 控制台输出 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+	
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS Z} [%thread] %-5level %logger{50} - %msg%n</pattern>
+		</encoder>
+
+	</appender>
+	
+	<!-- 归档策略，按照每天生成日志文件 -->
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		
+		<!-- 文件大小和时间限制策略 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<!-- 按天归档，如果需要按小时归档，则设置为{yyyy-MM-dd_HH} -->
+			<FileNamePattern>${LOG_HOME}/demo.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+			<!-- 单个日志文件最多 500MB -->
+			<maxFileSize>500MB</maxFileSize>   
+			<!-- 3天的日志周期 --> 
+			<maxHistory>3</maxHistory>
+		</rollingPolicy>
+		
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS Z} [%thread] %-5level %logger{50} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<logger name="com.sauzny.sparkbaby.demolog.Builder" level="TRACE">
+		<appender-ref ref="FILE"/>
+	</logger>
+	
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+	
+</configuration>

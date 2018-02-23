@@ -1,0 +1,189 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.sauzny</groupId>
+	<artifactId>sparkbaby</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>sparkbaby</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<!-- 文件拷贝时的编码 -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- 编译时的编码 -->
+		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+		<!-- version -->
+		<junit>4.12</junit>
+		<spark.scala>2.11</spark.scala>
+		<spark>2.2.0</spark>
+		<slf4j>1.7.25</slf4j>
+		<logback>1.2.3</logback>
+	</properties>
+
+	<dependencies>
+
+		<!-- Spark -->
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-core_${spark.scala}</artifactId>
+		    <version>${spark}</version>
+		    
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.spark</groupId>
+		    <artifactId>spark-streaming_${spark.scala}</artifactId>
+		    <version>${spark}</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.spark</groupId>
+		    <artifactId>spark-streaming-kafka-0-10_${spark.scala}</artifactId>
+		    <version>${spark}</version>
+            <exclusions>    
+                <exclusion>  
+				    <groupId>log4j</groupId>
+				    <artifactId>log4j</artifactId> 
+                </exclusion> 
+                <exclusion>  
+                    <artifactId>slf4j-log4j12</artifactId>  
+                    <groupId>org.slf4j</groupId>  
+                </exclusion>  
+                <exclusion>  
+                    <artifactId>slf4j-api</artifactId>  
+                    <groupId>org.slf4j</groupId>  
+                </exclusion>  
+            </exclusions>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.spark</groupId>
+		    <artifactId>spark-sql_${spark.scala}</artifactId>
+		    <version>${spark}</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.spark</groupId>
+		    <artifactId>spark-mllib_${spark.scala}</artifactId>
+		    <version>${spark}</version>
+		</dependency>
+		<!-- 
+		Logging
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-api</artifactId>
+			<version>${slf4j}</version>
+		</dependency>
+		
+		jul桥接 用来输出 Java Logging Framework (JUL)  
+		<dependency>  
+		  <groupId>org.slf4j</groupId>  
+		  <artifactId>jul-to-slf4j</artifactId>  
+		  <version>${slf4j}</version>  
+		</dependency>  
+		  
+		jcl桥接，用来输出 第三方Jakarta Commons Logging (JCL)  
+		<dependency>  
+		   <groupId>org.slf4j</groupId>  
+		  <artifactId>jcl-over-slf4j</artifactId>  
+		  <version>${slf4j}</version>  
+		</dependency> 
+		
+		https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+		<dependency>
+		    <groupId>ch.qos.logback</groupId>
+		    <artifactId>logback-classic</artifactId>
+		    <version>${logback}</version>
+		</dependency>
+		
+		https://mvnrepository.com/artifact/ch.qos.logback/logback-access
+		<dependency>
+		    <groupId>ch.qos.logback</groupId>
+		    <artifactId>logback-access</artifactId>
+		    <version>${logback}</version>
+		</dependency>
+ -->
+		<!-- lombok -->
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>1.16.12</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.beust/jcommander -->
+		<dependency>
+		    <groupId>com.beust</groupId>
+		    <artifactId>jcommander</artifactId>
+		    <version>1.72</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.7-dmr</version>
+		</dependency>
+		
+		<!-- dl4j -->
+		<dependency>
+		    <groupId>org.deeplearning4j</groupId>
+		    <artifactId>dl4j-spark_2.11</artifactId>
+		    <version>0.9.1_spark_2</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.deeplearning4j</groupId>
+		    <artifactId>dl4j-spark-parameterserver_2.11</artifactId>
+		    <version>0.9.1_spark_2</version>
+		</dependency>
+		
+		<!-- Testing -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit}</version>
+			<scope>test</scope>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source> <!-- 源代码使用的开发版本 -->
+					<target>1.8</target> <!-- 需要生成的目标class文件的编译版本 -->
+					<!-- 一般而言，target与source是保持一致的，但是，有时候为了让程序能在其他版本的jdk中运行(对于低版本目标jdk，源代码中需要没有使用低版本jdk中不支持的语法)，会存在target不同于source的情况 -->
+
+					<!-- 这下面的是可选项 -->
+					<encoding>UTF-8</encoding>
+					<meminitial>128m</meminitial>
+					<maxmem>512m</maxmem>
+					<fork>true</fork> <!-- fork is enable,用于明确表示编译版本配置的可用 -->
+					<compilerVersion>1.3</compilerVersion>
+
+					<!-- 这个选项用来传递编译器自身不包含但是却支持的参数选项 -->
+					<!-- <compilerArgument>-verbose -bootclasspath ${java.home}\lib\rt.jar</compilerArgument> -->
+
+				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<!-- 指定编码格式，否则在DOS下运行mvn命令时当发生文件资源copy时将使用系统默认使用GBK编码 -->
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>
