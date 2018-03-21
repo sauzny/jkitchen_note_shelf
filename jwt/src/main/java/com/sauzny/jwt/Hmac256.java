@@ -1,8 +1,11 @@
 package com.sauzny.jwt;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.crypto.SecretKey;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -13,6 +16,19 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 public class Hmac256 {
 
+    /*
+     * 
+                .setId(id)                                      // JWT_ID
+                .setAudience("")                                // 接受者
+                .setClaims(null)                                // 自定义属性
+                .setSubject("")                                 // 主题
+                .setIssuer("")                                  // 签发者
+                .setIssuedAt(new Date())                        // 签发时间
+                .setNotBefore(new Date())                       // 失效时间
+                .setExpiration(long)                                // 过期时间
+                .signWith(signatureAlgorithm, secretKey);           // 签名算法以及密匙
+     */
+    
     public static String create(){
         
         String token = "";
@@ -57,6 +73,7 @@ public class Hmac256 {
         return jwt;
     }
     
+    
     public static void main(String[] args) {
         String token = Hmac256.create();
         System.out.println(token);
@@ -65,5 +82,7 @@ public class Hmac256 {
         System.out.println(jwt.getHeader());
         System.out.println(jwt.getPayload());
         System.out.println(jwt.getSignature());
+        
+        System.out.println(jwt.getClaim("sub").asString());
     }
 }
