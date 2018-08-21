@@ -28,7 +28,6 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit}</version>
-			<scope>test</scope>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
