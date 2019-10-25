@@ -34,8 +34,9 @@ public class CostTime {
         try {
             // 1. 创建 ClassReader 读入 .class 文件到内存中
             InputStream inputStream = new FileInputStream(classPath);
+
             // 2. 创建 ClassWriter 对象，将操作之后的字节码的字节数组回写
-            ClassReader reader = new ClassReader(inputStream);
+            ClassReader reader = new ClassReader(Files.readAllBytes(Paths.get(classPath)));
             // 3. 创建自定义的 ClassVisitor 对象
             ClassWriter writer = new ClassWriter(reader, ClassWriter.COMPUTE_MAXS);
             ClassVisitor change = new ChangeVisitor(writer);
