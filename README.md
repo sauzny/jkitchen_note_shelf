@@ -8,4 +8,5 @@ jkitchen_note_shelf，常用工具说明
 - [ ] selenium
 - [ ] caffeine
 - [ ] antv
-- [ ] metrics
+- [ ] zip
+- [ ] annotation
