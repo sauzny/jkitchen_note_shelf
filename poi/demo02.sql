@@ -1,0 +1,14 @@
+insert into aaabbb values (1, 'ROOTNAME', 'root dbspace 名称', '常规信息', 'The root dbspace name to contain reserved pages and internal tracking tables.', 'root dbspace 名称', '', '', now());
+insert into aaabbb values (2, 'ROOTPATH', 'root dbspace 路径', '常规信息', 'The path for the device containing the root dbspace', 'root dbspace 路径', '', '', now());
+insert into aaabbb values (3, 'ROOTOFFSET', 'root dbspace在设备上的偏移量', '常规信息', 'The offset, in KB, of the root dbspace into the device. The offset is required for some raw devices.', 'root dbspace在设备上的偏移量', '', '', now());
+insert into aaabbb values (4, 'ROOTSIZE', 'root dbspace容量', '常规信息', 'The size of the root dbspace, in KB.  The value of 200000 allows for a default user space of about 100 MB and the default system space requirements.', 'root dbspace容量', '', '', now());
+insert into aaabbb values (5, 'MIRROR', '镜像', '标签B', 'Enable (1) or disable (0) mirroring', '镜像', '', '', now());
+insert into aaabbb values (6, 'MIRRORPATH', 'root dbspace 镜像路径', '标签C', 'The path for the device containing the mirrored root dbspace', 'root dbspace 镜像路径', '', '', now());
+insert into aaabbb values (7, 'MIRROROFFSET', 'root dbspace 镜像偏移量', '标签D', 'The offset, in KB, into the mirrored device', 'root dbspace 镜像偏移量', '', '', now());
+insert into aaabbb values (8, 'PHYSFILE', '物理日志文件大小', '标签B', 'The size, in KB, of the physical log on disk. If RTO_SERVER_RESTART is enabled, the suggested formula for the size of PHSYFILE (up to about 1 GB) is: \n         PHYSFILE = Size of BUFFERS * 1.1', '物理日志文件大小', '', '', now());
+insert into aaabbb values (9, 'PLOG_OVERFLOW_PATH', '物理日志文件溢出时，日志保存路径', '标签B', 'The directory for extra physical log files if the physical log overflows during recovery or long transaction rollback', '物理日志文件溢出时，日志保存路径', '', '', now());
+insert into aaabbb values (10, 'PHYSBUFF', '物理日志缓冲区大小', '标签C', 'The size of the physical log buffer, in KB', '物理日志缓冲区大小', '', '', now());
+insert into aaabbb values (11, 'LOGFILES', '逻辑文件数', '常规信息', 'The number of logical log files', '逻辑文件数', '', '', now());
+insert into aaabbb values (12, 'LOGSIZE', '单个逻辑文件大小', '标签D', 'The size of each logical log, in KB', '单个逻辑文件大小', '', '', now());
+insert into aaabbb values (13, 'DYNAMIC_LOGS', '动态日志分配策略', '常规信息', 'The type of dynamic log allocation. \nAcceptable values are: \n   2 Automatic. Informix adds a new logical log to the root dbspace when necessary. \n   1 Manual. Informix notifies the DBA to add new logical logs when necessary. \n   0 Disabled', '动态日志分配策略', '', '', now());
+insert into aaabbb values (14, 'LOGBUFF', '逻辑日志缓冲区大小', '标签C', 'The size of the logical log buffer, in KB', '逻辑日志缓冲区大小', '', '', now());
