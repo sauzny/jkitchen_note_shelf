@@ -19,7 +19,6 @@ public class App {
 
 
         try(SSHClient ssh = new SSHClient()){
-
             ssh.addHostKeyVerifier(new PromiscuousVerifier());
             ssh.connect("172.16.8.211", 22);
             ssh.authPassword("root", "111111");
@@ -30,11 +29,22 @@ public class App {
             }
             */
             try (Session session = ssh.startSession()) {
+
                 Session.Command cmd = session.exec("df -h");
                 String ret = IOUtils.readFully(cmd.getInputStream()).toString();
                 System.out.println(ret);
-                cmd.join(1, TimeUnit.SECONDS);
-                System.out.println("\n** exit status: " + cmd.getExitStatus());
+
+                // 判断文件所否存在
+                //if [ -e 2.txt ] ; then echo true ; else echo false ; fi
+                //Boolean.parseBoolean()
+
+                // 好像不能进行二次交互
+                /*
+                Session.Command cmd1 = session.exec("df -h");
+                String ret1 = IOUtils.readFully(cmd1.getInputStream()).toString();
+                System.out.println(ret1);
+                */
+                //System.out.println("\n** exit status: " + cmd.getExitStatus());
             } catch (IOException e) {
                 e.printStackTrace();
             }
