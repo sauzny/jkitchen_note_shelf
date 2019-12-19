@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+configuration 节点包含下面三个属性
+scan: 当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。
+scanPeriod: 设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟。
+debug: 当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false
+ -->
+<configuration debug="false">
+
+    <!-- 控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d表示日期，%-10.15thread表示线程名，%highlight(%-5level)：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS Z} %-15.15thread %highlight(%-5level) %-40(%logger{40}) - %msg%n}
+            </pattern>
+        </encoder>
+        <!--
+		<layout class="com.sauzny.jmvc.utils.logback.MyPatternLayout">
+			格式化输出：%contextName %d表示日期，%-10.15thread表示线程名，%highlight(%-5level)：级别从左显示5个字符宽度  %msg：日志消息，%n是换行符
+			<pattern>%contextName %d{yyyy-MM-dd HH:mm:ss.SSS Z} [自定义转换符输出的ip：%ip] [%-10.15thread] %highlight(%-5level) %-40(%logger{40}) - %msg%n</pattern>
+		</layout>
+		 -->
+    </appender>
+
+
+    <!-- 日志输出级别 -->
+    <!-- TRACE < DEBUG < INFO < WARN < ERROR -->
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
