@@ -3,6 +3,7 @@ package com.sauzny.sshj;
 import net.schmizz.sshj.SSHClient;
 import net.schmizz.sshj.common.IOUtils;
 import net.schmizz.sshj.connection.channel.direct.Session;
+import net.schmizz.sshj.sftp.PacketType;
 import net.schmizz.sshj.sftp.SFTPClient;
 import net.schmizz.sshj.sftp.StatefulSFTPClient;
 import net.schmizz.sshj.transport.verification.PromiscuousVerifier;
@@ -23,11 +24,11 @@ public class App {
             ssh.connect("172.16.8.211", 22);
             ssh.authPassword("root", "111111");
             //StatefulSFTPClient
-            /*
+
             try (final SFTPClient sftp = ssh.newSFTPClient()) {
-                sftp.put(new FileSystemFile("F:\\temp\\汉字.txt"),"/root/Downloads");
+                sftp.put(new FileSystemFile("F:\\temp\\222.txt"),"/root/Downloads");
             }
-            */
+
             try (Session session = ssh.startSession()) {
 
                 Session.Command cmd = session.exec("df -h");
