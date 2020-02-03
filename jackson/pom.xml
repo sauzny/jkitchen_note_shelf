@@ -59,7 +59,7 @@
 		</dependency>
 		 -->
 		<!-- 实现java8时间类型格式化 -->
-		<!-- 这一个包，包含了jackson的三个包core annotations databind -->
+		<!-- 这一个包，包含了jackson的很多包，额外多出了spring的两个包，不喜欢就排除吧-->
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-json -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
