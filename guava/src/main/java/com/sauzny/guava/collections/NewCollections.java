@@ -1,9 +1,6 @@
 package com.sauzny.guava.collections;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.junit.Test;
 
@@ -65,6 +62,9 @@ public class NewCollections {
 		multiset.add("a");
 		multiset.addAll(list);
 		multiset.add("b", 2);
+        multiset.add("c");
+        multiset.add("d");
+        multiset.add("e");
 		
 		System.out.println("multiset长度：" + multiset.size());
 		
@@ -83,6 +83,9 @@ public class NewCollections {
 		for(Multiset.Entry<String> entry : multiset.entrySet()){
 			System.out.println("每一个元素输出：" + entry.getElement() + "  -  " + entry.getCount());
 		}
+
+        Optional<Multiset.Entry<String>> min = multiset.entrySet().stream().min(Comparator.comparing(Multiset.Entry::getCount));
+        min.ifPresent(entry -> System.out.println("次数最小的元素输出：" + entry.getElement() + "  -  " + entry.getCount()));
 		
 	}
 	
