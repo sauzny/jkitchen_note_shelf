@@ -64,10 +64,7 @@ public class CanalEmbedSelector {
             return;
         }
 
-        canalServer.setCanalInstanceGenerator(destination -> {
-            Canal canal = CanalFactory.buildCanal(customCanalParameter);
-            return new CanalInstanceWithManager(canal, filter);
-        });
+        canalServer.setCanalInstanceGenerator(destination -> new CanalInstanceWithManager(CanalFactory.buildCanal(customCanalParameter), filter));
 
         canalServer.start();
         canalServer.start(customCanalParameter.getCanalName());
@@ -128,6 +125,7 @@ public class CanalEmbedSelector {
         } else {
             entries = message.getEntries();
         }
+
 
         // 记录最后执行的时间
         recordLastEntryTime(entries);

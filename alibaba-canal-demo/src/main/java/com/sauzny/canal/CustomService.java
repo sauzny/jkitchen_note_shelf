@@ -1,6 +1,7 @@
 package com.sauzny.canal;
 
 import com.alibaba.otter.canal.common.MQMessageUtils;
+import com.alibaba.otter.canal.parse.inbound.mysql.dbsync.LogEventConvert;
 import com.alibaba.otter.canal.protocol.CanalEntry;
 import com.alibaba.otter.canal.protocol.Message;
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -72,5 +73,6 @@ public class CustomService {
             }
         }).start();
 
+        //LogEventConvert
     }
 }

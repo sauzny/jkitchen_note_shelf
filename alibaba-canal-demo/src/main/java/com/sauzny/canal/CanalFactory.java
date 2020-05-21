@@ -1,5 +1,6 @@
 package com.sauzny.canal;
 
+import com.alibaba.otter.canal.filter.aviater.AviaterRegexFilter;
 import com.alibaba.otter.canal.instance.manager.model.Canal;
 import com.alibaba.otter.canal.instance.manager.model.CanalParameter;
 import com.alibaba.otter.canal.instance.manager.model.CanalParameter.*;
@@ -38,12 +39,12 @@ public class CanalFactory {
         parameter.setDbUsername(customCanalParameter.getDbUserName());
         parameter.setDbPassword(customCanalParameter.getDbPassWord());
 
-/*
+
         parameter.setPositions(Arrays.asList(
                 "{\"journalName\":\"mysql-bin.000001\",\"position\":332L,\"timestamp\":\"1505998863000\"}",
                 "{\"journalName\":\"mysql-bin.000001\",\"position\":332L,\"timestamp\":\"1505998863000\"}"
         ));
-*/
+
 
         parameter.setSlaveId(UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE);
 
@@ -60,5 +61,11 @@ public class CanalFactory {
 
         canal.setCanalParameter(parameter);
         return canal;
+    }
+
+    public static void main(String[] args) {
+        String template = "{\"journalName\":\"%s\",\"position\":%s,\"timestamp\":%s}";
+        String result = String.format(template, "mysql-bin.000001", "332", "1505998863000" );
+        System.out.println(result);
     }
 }
