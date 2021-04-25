@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: mavenp
+server:
+  port: 9090
+logging:
+  level:
+    root: info
+local:
+  repository: F:/m3
