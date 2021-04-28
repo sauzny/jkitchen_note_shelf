@@ -1,7 +1,6 @@
 package org.example.demo0103.old;
 
 import java.math.BigDecimal;
-import java.util.Currency;
 
 public class Demo0103 {
 

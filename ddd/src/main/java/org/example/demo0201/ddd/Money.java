@@ -1,4 +1,4 @@
-package org.example.demo0102.ddd;
+package org.example.demo0201.ddd;
 
 import lombok.Value;
 
@@ -11,5 +11,17 @@ public class Money {
     public Money(BigDecimal amount, Currency currency) {
         this.amount = amount;
         this.currency = currency;
+    }
+
+    public Money add(Money money){
+        return this;
+    }
+
+    public Money subtract(Money money){
+        return this;
+    }
+
+    public int compareTo(Money money){
+        return 0;
     }
 }

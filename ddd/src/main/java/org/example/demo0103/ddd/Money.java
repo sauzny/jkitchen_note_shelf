@@ -3,7 +3,6 @@ package org.example.demo0103.ddd;
 import lombok.Value;
 
 import java.math.BigDecimal;
-import java.util.Currency;
 
 @Value
 public class Money {

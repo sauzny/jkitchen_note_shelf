@@ -1,7 +1,5 @@
 package org.example.demo0103.ddd;
 
-import java.util.Currency;
-
 public class Demo0103 {
 
     /**

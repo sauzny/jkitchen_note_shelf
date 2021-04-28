@@ -1,4 +1,4 @@
-package org.example.demo0103.ddd;
+package org.example.types;
 
 import lombok.NonNull;
 import lombok.Value;
@@ -17,7 +17,7 @@ public class ExchangeRate {
         this.to = to;
     }
 
-    public Money exchange(@NonNull Money fromMoney) {
+    public Money exchangeTo(@NonNull Money fromMoney) {
         isTrue(this.from.equals(fromMoney.getCurrency()));
         BigDecimal targetAmount = fromMoney.getAmount().multiply(rate);
         return new Money(targetAmount, to);
@@ -28,4 +28,5 @@ public class ExchangeRate {
             throw new RuntimeException("参数不合法");
         }
     }
+
 }
