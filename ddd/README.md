@@ -40,3 +40,18 @@ DDD不是一个什么特殊的架构，而是任何传统代码经过合理的�
 - 高可扩展性：做新功能时，绝大部分的代码都能复用，仅需要增加核心业务逻辑即可。
 - 高可测试性：每个拆分出来的模块都符合单一性原则，绝大部分不依赖框架，可以快速的单元测试，做到100%覆盖。
 - 代码结构清晰：通过POM module可以解决模块间的依赖关系， 所有外接模块都可以单独独立成Jar包被复用。当团队形成规范后，可以快速的定位到相关代码。
+
+## 三、Repository模式
+
+原文
+
+`https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&mid=2650406692&idx=1&sn=4a4ac4168299d8ca1905a4f457ae4c59&chksm=8395373cb4e2be2a2d066a5ea4e631fd6270e969ce61883b488f61c1ce33fbc0b362ec9cbf7b&scene=21#wechat_redirect`
+
+接口规范：
+
+- 接口名称不应该使用底层实现的语法
+  - insert、select、update、delete都属于SQL语法，使用这几个词相当于和DB底层实现做了绑定。
+  - 应该把 Repository 当成一个中性的类 似Collection 的接口，使用语法如 find、save、remove。
+  - 在这里特别需要指出的是区分 insert/add 和 update 本身也是一种和底层强绑定的逻辑，一些储存如缓存实际上不存在insert和update的差异，在这个 case 里，使用中性的 save 接口，然后在具体实现上根据情况调用 DAO 的 insert 或 update 接口。
+- 出参入参不应该使用底层数据格式
+- 应该避免所谓的“通用”Repository模式
