@@ -1,6 +1,8 @@
-package org.example.demo0301.ddd.application;
+package org.example.demo0301.ddd.application.assembler;
 
 
+import org.example.demo0301.ddd.application.dto.ItemDTO;
+import org.example.demo0301.ddd.application.dto.OrderDTO;
 import org.example.demo0301.ddd.domain.entity.Item;
 import org.example.demo0301.ddd.domain.entity.Order;
 import org.mapstruct.Mapper;

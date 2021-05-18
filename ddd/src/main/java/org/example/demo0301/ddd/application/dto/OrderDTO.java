@@ -1,4 +1,4 @@
-package org.example.demo0301.ddd.application;
+package org.example.demo0301.ddd.application.dto;
 
 import lombok.Data;
 
