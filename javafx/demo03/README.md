@@ -20,6 +20,16 @@
 
 ## 二、打包
 
+代码目录结构不可修改
+
+```java
+
+// 这三个文件所在位置不可修改，文件中的内容按照实际修改
+App.java 
+XxxxxController.java
+module-info.java
+```
+
 修改 `pom.xml` 中的 `javafx-maven-plugin`
 
 ```xml
