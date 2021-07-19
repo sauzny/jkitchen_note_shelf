@@ -18,7 +18,7 @@
 		<!-- 编译时的编码 -->
 		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
 		<!-- 常用软件版本 -->
-		<junit>4.12</junit>
+		<junit>4.13.1</junit>
 		<slf4j>1.7.25</slf4j>
 		<logback>1.2.3</logback>
 	</properties>
