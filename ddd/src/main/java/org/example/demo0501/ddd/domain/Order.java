@@ -5,6 +5,12 @@ import lombok.Data;
 @Data
 public class Order {
 
+
+    private long buyerId;
+    private long sellerId;
+    private long itemId;
+    private String itemTitle;
+
     private Long itemUnitPrice;
     private Integer count;
 
